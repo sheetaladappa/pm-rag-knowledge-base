@@ -1,0 +1,30 @@
+services:
+  backend:
+    build: ./backend
+    container_name: pmrag-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      # Optional overrides — the defaults here match backend/app/config.py
+      - LLM_MODEL=${LLM_MODEL:-qwen/qwen3.6-27b}
+      - LLM_REASONING_EFFORT=${LLM_REASONING_EFFORT:-default}
+      - QDRANT_HOST=${QDRANT_HOST}
+      - QDRANT_API_KEY=${QDRANT_API_KEY}
+      - SQLITE_PATH=/app/data/pmrag.db
+      - UPLOAD_DIR=/app/data/uploads
+      - MAX_STORAGE_MB=1024
+    volumes:
+      - ./backend/data:/app/data
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: pmrag-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    restart: unless-stopped

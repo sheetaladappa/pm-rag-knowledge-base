@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* The chat transcript and sidebar both scroll; the default macOS overlay bar
+   sits awkwardly on dark panels, so give them a quiet custom one. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #334155 transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #243040;
+  border-radius: 99px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #334155;
+}

@@ -1,0 +1,30 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.9
+pydantic==2.9.2
+pydantic-settings==2.5.2
+sqlalchemy==2.0.35
+
+# RAG / LangChain
+langchain==0.3.3
+langchain-community==0.3.2
+langchain-qdrant==0.1.4
+
+# Loaders
+pypdf==5.0.1
+python-docx==1.1.2
+docx2txt==0.8
+
+# Embeddings — fastembed runs on ONNX Runtime instead of full PyTorch,
+# same embedding quality, a fraction of the size/RAM footprint.
+fastembed==0.3.6
+
+# Vector DB client
+qdrant-client==1.11.3
+
+# Groq Cloud LLM
+groq>=0.12.0
+httpx>=0.24.0
+
+# Export (generate PDF and DOCX directly, no external Office/LibreOffice needed)
+reportlab==4.2.5
